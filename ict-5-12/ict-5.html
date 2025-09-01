@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الصف الخامس الابتدائي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+    
+    <div class="container">
+        <div id="name-page" class="name-page active">
+            <h1><i class="fas fa-laptop"></i> اختبار  الصف الخامس الابتدائي</h1>
+            <div class="school-info">
+                <p><i class="fas fa-user-graduate"></i>اختبار  تكنولوجيا الصف الخامس</p>
+                <p><i class="fas fa-question-circle"></i> عدد الأسئلة: 30 سؤال</p>
+                <p><i class="fas fa-star"></i> الدرجة الكاملة: 30</p>
+            </div>
+            <div class="name-input">
+                <p><i class="fas fa-user"></i> اكتب اسمك لتبدأ الامتحان:</p>
+                <div class="input-group">
+                    <input type="text" id="studentName" placeholder="اسمك الثلاثي هنا" onkeypress="if(event.key === 'Enter') startQuiz()">
+                    <i class="fas fa-sign-in-alt"></i>
+                </div>
+            </div>
+            <button id="startQuiz" class="btn btn-primary btn-lg btn-center">
+                <i class="fas fa-play"></i> ابدأ الامتحان
+            </button>
+        </div>
+        <div id="quiz-page" class="quiz-page">
+            <h1><i class="fas fa-laptop"></i> اختبار الدرس الاول والثاني</h1>
+            <div class="school-info">
+                <p><i class="fas fa-user"></i> الطالب: <span id="displayName"></span></p>
+                <p><i class="fas fa-book-open"></i> إعداد: م. محمد بسيوني – 2B-SCHOOL</p>
+                <p><i class="fas fa-question-circle"></i> الأسئلة: <span id="progressText">0/20</span></p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        <div id="quiz">
+            <h2><i class="fas fa-check-circle"></i> أولًا: صح أو خطأ</h2>
+
+<div class="question" data-answer="true">
+    <div class="question-number">1</div>
+    <p>تستخدم الجداول الحسابية في إعداد وإنشاء الرسوم البيانية.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q1" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q1" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">2</div>
+    <p>يعتبر التعليم والتدريب طريقة رائعة لنقل المعرفة والمهارات.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q2" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q2" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">3</div>
+    <p>يستخدم برنامج Zoom لعقد اجتماعات افتراضية.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q3" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q3" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="false">
+    <div class="question-number">4</div>
+    <p>يمكن استخدام برنامج Word لعمل عروض تقديمية.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q4" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q4" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ (يستخدم PowerPoint لعمل العروض التقديمية)
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">5</div>
+    <p>تعتبر مشاركة المعلومات أمر أساسي في حياتنا اليومية.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q5" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q5" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">6</div>
+    <p>تعتبر الاجتماعات الافتراضية طريقة فعالة في تعليم الآخرين.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q6" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q6" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">7</div>
+    <p>كان هيبرت يوثق اجتماعاته برسائل بريد إلكتروني يرسلها للمشاركين.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q7" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q7" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">8</div>
+    <p>في حالة عدم القدرة على تخزين الملفات يجب إغلاق بعض البرامج.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q8" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q8" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">9</div>
+    <p>الـ HDMI هو سلك ينقل الصوت والصورة من الأجهزة وإليها.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q9" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q9" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">10</div>
+    <p>يعتبر الإنترنت السلكي أسرع وأكثر استقراراً من الوصلات اللاسلكية.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q10" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q10" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="false">
+    <div class="question-number">11</div>
+    <p>التيرا بايت = 1024 ميجا بايت.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q11" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q11" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ (التيرا بايت = 1024 جيجا بايت)
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">12</div>
+    <p>إذا كان الإنترنت المنزلي لديك لا يعمل يجب الاتصال بمزود خدمة الإنترنت.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q12" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q12" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">13</div>
+    <p>كلما زادت عدد الدورات زاد معها سرعة معالجة البيانات والتعليمات.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q13" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q13" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">14</div>
+    <p>يمكن تخزين المعلومات ومشاركتها باستخدام ذاكرة الفلاش Flash Memory.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q14" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q14" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<div class="question" data-answer="true">
+    <div class="question-number">15</div>
+    <p>الاتصال ضعيف بالشبكة أثناء مؤتمر الفيديو قد يكون بسبب البطء في الاتصال اللاسلكي.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q15" value="true">
+            <span class="option-label">صح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q15" value="false">
+            <span class="option-label">خطأ</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
+    </div>
+</div>
+
+<h2><i class="fas fa-question-circle"></i> ثانيًا: اختر الإجابة الصحيحة</h2>
+
+<div class="question" data-answer="أ">
+    <div class="question-number">16</div>
+    <p>كبل يربط الكمبيوتر ب جهاز الراوتر</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q16" value="أ">
+            <span class="option-label">أ) سلك الايثرنت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q16" value="ب">
+            <span class="option-label">ب) الكيلو بايت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q16" value="ج">
+            <span class="option-label">ج) الذاكرة الفلاش</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q16" value="د">
+            <span class="option-label">د) الـ USB</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) سلك الايثرنت
+    </div>
+</div>
+
+<div class="question" data-answer="أ">
+    <div class="question-number">17</div>
+    <p>يعد محرك ____________ مثال لمحرك الأقراص المدمجة والعمل بشكل أسرع.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q17" value="أ">
+            <span class="option-label">أ) القرص الصلب الخارجي</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q17" value="ب">
+            <span class="option-label">ب) الشاشة</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q17" value="ج">
+            <span class="option-label">ج) لوحة المفاتيح</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q17" value="د">
+            <span class="option-label">د) سلك الإنترنت</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) القرص الصلب الخارجي
+    </div>
+</div>
+
+<div class="question" data-answer="أ">
+    <div class="question-number">18</div>
+    <p>لحل مشكلة عدم وجود مساحة تخزينية كافية للرسومات على  الكمبيوتر:</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q18" value="أ">
+            <span class="option-label">أ) اغلق بعض البرامج</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q18" value="ب">
+            <span class="option-label">ب) تحميل المزيد من البرامج</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q18" value="ج">
+            <span class="option-label">ج) إغلاق جهاز الكمبيوتر</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q18" value="د">
+            <span class="option-label">د) تحميل برنامج الورد</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) اغلق بعض البرامج
+    </div>
+</div>
+
+<div class="question" data-answer="ب">
+    <div class="question-number">19</div>
+    <p>جهاز ____________ يربط جهاز الكمبيوتر بالإنترنت.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q19" value="أ">
+            <span class="option-label">أ) الباور</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q19" value="ب">
+            <span class="option-label">ب) الراوتر</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q19" value="ج">
+            <span class="option-label">ج) الميكروفون</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q19" value="د">
+            <span class="option-label">د) جيجا هيرتز</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) الراوتر    </div>
+</div>
+
+<div class="question" data-answer="أ">
+    <div class="question-number">20</div>
+    <p>وحدة القياس ____________ تستخدم لقياس عدد الدورات التي تنفذها وحدة المعالجة المركزية في الثانية.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q20" value="أ">
+            <span class="option-label">أ) الجيجا هيرتز GHz</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q20" value="ب">
+            <span class="option-label">ب) بت Bit</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q20" value="ج">
+            <span class="option-label">ج) ميجابايت في الثانية Mbps</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q20" value="د">
+            <span class="option-label">د) جيجا بايت GB</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) الجيجا هيرتز GHz
+    </div>
+</div>
+
+<div class="question" data-answer="أ">
+    <div class="question-number">21</div>
+    <p>أصغر وحدة قياس هي ____________.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q21" value="أ">
+            <span class="option-label">أ) البت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q21" value="ب">
+            <span class="option-label">ب) الكيلو بايت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q21" value="ج">
+            <span class="option-label">ج) البايت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q21" value="د">
+            <span class="option-label">د) الميجا بايت</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) البت
+    </div>
+</div>
+
+<div class="question" data-answer="أ">
+    <div class="question-number">22</div>
+    <p>وحدة القياس ____________ تستخدم لقياس سرعة الشبكة أو الاتصال بالشبكة الإنترنت.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q22" value="أ">
+            <span class="option-label">أ) ميجابايت في الثانية Mbps</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q22" value="ب">
+            <span class="option-label">ب) جيجا بايت GB</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q22" value="ج">
+            <span class="option-label">ج) جيجا هيرتز GHz</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q22" value="د">
+            <span class="option-label">د) بت bit</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) ميجابايت في الثانية Mbps
+    </div>
+</div>
+
+<div class="question" data-answer="أ">
+    <div class="question-number">23</div>
+    <p>الكيلو بايت يعادل 1024 ____________.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q23" value="أ">
+            <span class="option-label">أ) بايت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q23" value="ب">
+            <span class="option-label">ب) ميجا بايت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q23" value="ج">
+            <span class="option-label">ج) جيجا بايت</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q23" value="د">
+            <span class="option-label">د) تيرا بايت</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) بايت
+    </div>
+</div>
+
+<div class="question" data-answer="ج">
+    <div class="question-number">24</div>
+    <p>استخدم هيبرت برنامج ____________ لعرض نتائج أبحاثه.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q24" value="أ">
+            <span class="option-label">أ) Word</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q24" value="ب">
+            <span class="option-label">ب) Excel</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q24" value="ج">
+            <span class="option-label">ج) Powerpoint</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q24" value="د">
+            <span class="option-label">د) Zoom</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) Powerpoint
+    </div>
+</div>
+
+<div class="question" data-answer="د">
+    <div class="question-number">25</div>
+    <p>استخدم فريد هيبرت ____________ للتواصل بشكل رسمي.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q25" value="أ">
+            <span class="option-label">أ) الرسائل الورقية</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q25" value="ب">
+            <span class="option-label">ب) رسائل البريد الإلكتروني</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q25" value="ج">
+            <span class="option-label">ج) المستندات</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q25" value="د">
+            <span class="option-label">د) كل ما سبق</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د ) كل ما سبق  
+      </div>
+</div>
+
+<div class="question" data-answer="د">
+    <div class="question-number">26</div>
+    <p>يمكن عمل اجتماعات افتراضية عن طريق منصة ____________.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q26" value="أ">
+            <span class="option-label">أ) Word</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q26" value="ب">
+            <span class="option-label">ب) Excel</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q26" value="ج">
+            <span class="option-label">ج) Powerpoint</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q26" value="د">
+            <span class="option-label">د) Zoom</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) Zoom
+    </div>
+</div>
+        <div class="question" data-answer="أ">
+    <div class="question-number">27</div>
+    <p>لحل مشكلة عدم القدرة على تخزين الملفات بجهاز الكمبيوتر يمكنك:</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q27" value="أ">
+            <span class="option-label">أ) نقل الملفات القديمة إلى محرك أقراص خارجي</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q27" value="ب">
+            <span class="option-label">ب) نقل جهاز الكمبيوتر لمكان آخر</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q27" value="ج">
+            <span class="option-label">ج) توصيل الكمبيوتر بالروتر</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q27" value="د">
+            <span class="option-label">د) توصيل جهاز الكمبيوتر بالإنترنت</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) نقل الملفات القديمة إلى محرك أقراص خارجي
+    </div>
+</div>
+
+<div class="question" data-answer="ب">
+    <div class="question-number">28</div>
+    <p>توفر ____________ طريقة فعالة لتعليم الآخرين وتدريبهم عن بعد.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q28" value="أ">
+            <span class="option-label">أ) المقابلات المباشرة</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q28" value="ب">
+            <span class="option-label">ب) الاجتماعات الافتراضية</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q28" value="ج">
+            <span class="option-label">ج) البريد الإلكتروني</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q28" value="د">
+            <span class="option-label">د) برنامج معالج النصوص</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) الاجتماعات الافتراضية
+    </div>
+</div>
+
+<div class="question" data-answer="ب">
+    <div class="question-number">29</div>
+    <p>يفضل فريد هيبرت التواصل مع الناس من خلال ____________.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q29" value="أ">
+            <span class="option-label">أ) المقابلات المباشرة</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q29" value="ب">
+            <span class="option-label">ب) الاجتماعات الافتراضية</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q29" value="ج">
+            <span class="option-label">ج) التواصل عن بعد</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q29" value="د">
+            <span class="option-label">د) لا شيء مما سبق</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) الاجتماعات الافتراضية
+    </div>
+</div>
+
+<div class="question" data-answer="ب">
+    <div class="question-number">30</div>
+    <p>يستخدم برنامج الجداول الحسابية Excel في ____________.</p>
+    <div class="options">
+        <label class="option">
+            <input type="radio" name="q30" value="أ">
+            <span class="option-label">أ) كتابة التقارير</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q30" value="ب">
+            <span class="option-label">ب) إنشاء رسوم بيانية</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q30" value="ج">
+            <span class="option-label">ج) عقد اجتماعات افتراضية</span>
+        </label>
+        <label class="option">
+            <input type="radio" name="q30" value="د">
+            <span class="option-label">د) كل ما سبق</span>
+        </label>
+    </div>
+    <div class="correct-answer" style="display: none;">
+        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) إنشاء رسوم بيانية
+    </div>
+</div>
+
+        </div>
+               
+        
+            </div>
+            <button id="submit" class="btn btn-primary btn-lg btn-center" disabled>
+                <i class="fas fa-paper-plane"></i> سلم الإجابات
+            </button>
+            <div id="result"></div>
+            <div id="correction"></div>
+        </div>
+    </div>
+    <div id="celebration" class="celebration-effect" style="display: none;"></div>
+    <audio id="victorySound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3" preload="auto" muted></audio>
+    <script src="script.js"></script>
+</body>
+</html>
