@@ -1,712 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧠 امتحان ICDL – الوحدة الثانية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    
-    <div class="container">
-        <div id="name-page" class="name-page active">
-            <h1><i class="fas fa-laptop"></i> اختبار  الصف الرابع الابتدائي</h1>
-            <div class="school-info">
-                <p><i class="fas fa-user-graduate"></i>اختبار  تكنولوجيا الصف الرابع</p>
-                <p><i class="fas fa-question-circle"></i> عدد الأسئلة: 30 سؤال</p>
-                <p><i class="fas fa-star"></i> الدرجة الكاملة: 30</p>
-            </div>
-            <div class="name-input">
-                <p><i class="fas fa-user"></i> اكتب اسمك لتبدأ الامتحان:</p>
-                <div class="input-group">
-                    <input type="text" id="studentName" placeholder="اسمك الثلاثي هنا" onkeypress="if(event.key === 'Enter') startQuiz()">
-                    <i class="fas fa-sign-in-alt"></i>
-                </div>
-            </div>
-            <button id="startQuiz" class="btn btn-primary btn-lg btn-center">
-                <i class="fas fa-play"></i> ابدأ الامتحان
-            </button>
-        </div>
-        <div id="quiz-page" class="quiz-page">
-            <h1><i class="fas fa-laptop"></i> اختبار الدرس الاول والثاني</h1>
-            <div class="school-info">
-                <p><i class="fas fa-user"></i> الطالب: <span id="displayName"></span></p>
-                <p><i class="fas fa-book-open"></i> إعداد: م. محمد بسيوني – 2B-SCHOOL</p>
-                <p><i class="fas fa-question-circle"></i> الأسئلة: <span id="progressText">0/20</span></p>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        <div id="quiz">
-    <h2><i class="fas fa-check-circle"></i> أولًا: صح أو خطأ</h2>
-    
-    <div class="question" data-answer="true">
-        <div class="question-number">1</div>
-        <p>ظهرت الأقمار الصناعية ونظام تحديد المواقع في عصر الثورة المعلوماتية.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q1" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q1" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="false">
-        <div class="question-number">2</div>
-        <p>تم استخدام الكهرباء لأول مرة في عصر ما قبل الثورة الميكانيكية.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q2" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q2" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">3</div>
-        <p>تم التواصل بين الشعوب في عصر ما قبل الثورة الميكانيكية من خلال الصور والرسومات.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q3" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q3" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">4</div>
-        <p>النسخة الأولى من الآلة الحاسبة تسمى بآلة باسكالين.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q4" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q4" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="false">
-        <div class="question-number">5</div>
-        <p>يطلق على عصر الثورة الكهربائية عصر الثورة المعلوماتية.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q5" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q5" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ
-        </div>
-    </div>
-
-    <div class="question" data-answer="false">
-        <div class="question-number">6</div>
-        <p>يتم التواصل بين الأفراد في عصر الثورة الإلكترونية عن طريق الرسائل النصية.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q6" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q6" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ
-        </div>
-    </div>
-
-    <div class="question" data-answer="false">
-        <div class="question-number">7</div>
-        <p>أول جهاز كمبيوتر رقمي ظهر في عصر الثورة الكهربائية.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q7" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q7" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">8</div>
-        <p>نشأت تكنولوجيا الطباعة التي ساهمت في عملية طباعة الكتب في عصر الثورة الميكانيكية.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q8" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q8" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">9</div>
-        <p>يستخدم نظام تحديد المواقع GPS لتحديد مكان ما بواسطة الأقمار الصناعية.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q9" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q9" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">10</div>
-        <p>يستخدم جهاز مقياس المغناطيسية للعثور على المعادن في باطن الأرض.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q10" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q10" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">11</div>
-        <p>يمكنك الحصول على الصور لبعض الأماكن باستخدام طائرات دون طيار.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q11" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q11" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">12</div>
-        <p>يستخدم الرادار المخترق للأرض لإيجاد الأجسام المدفونة تحت الأرض.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q12" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q12" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="false">
-        <div class="question-number">13</div>
-        <p>يعتمد الرادار المخترق للأرض على المجال المغناطيسي للكشف عن الأجسام المدفونة.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q13" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q13" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ
-        </div>
-    </div>
-
-    <div class="question" data-answer="false">
-        <div class="question-number">14</div>
-        <p>يمكن استخدام نظام تحديد المواقع العالمي للبحث تحت الأرض.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q14" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q14" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: خطأ
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">15</div>
-        <p>يعتمد نظام تحديد المواقع GPS على الأقمار الصناعية لتحديد الأماكن بدقة.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q15" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q15" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-
-    <div class="question" data-answer="true">
-        <div class="question-number">16</div>
-        <p>يجب أن تكون عالم آلة تستخدم الأدوات التكنولوجية المختلفة.</p>
-        <div class="options">
-            <label class="option">
-                <input type="radio" name="q16" value="true">
-                <span class="option-label">صح</span>
-            </label>
-            <label class="option">
-                <input type="radio" name="q16" value="false">
-                <span class="option-label">خطأ</span>
-            </label>
-        </div>
-        <div class="correct-answer" style="display: none;">
-            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: صح
-        </div>
-    </div>
-            
-    <h2><i class="fas fa-question-circle"></i> ثانيًا: اختر الإجابة الصحيحة</h2>
-
-<div class="question" data-answer="أ">
-    <div class="question-number">17</div>
-    <p>في عصر ما قبل الثورة الميكانيكية كانت الشعوب تتواصل مع بعضها من خلال:</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q17" value="أ">
-            <span class="option-label">أ) الصور والرسومات</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q17" value="ب">
-            <span class="option-label">ب) الرسائل النصية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q17" value="ج">
-            <span class="option-label">ج) البريد الإلكتروني</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q17" value="د">
-            <span class="option-label">د) الأقمار الصناعية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) الصور والرسومات
-    </div>
-</div>
-
-<div class="question" data-answer="ب">
-    <div class="question-number">18</div>
-    <p>أول ظهور للآلة الحاسبة كان في عصر:</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q18" value="أ">
-            <span class="option-label">أ) ما قبل الثورة الميكانيكية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q18" value="ب">
-            <span class="option-label">ب) الثورة الميكانيكية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q18" value="ج">
-            <span class="option-label">ج) الثورة الكهربائية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q18" value="د">
-            <span class="option-label">د) الثورة الإلكترونية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) الثورة الميكانيكية
-    </div>
-</div>
-
-<div class="question" data-answer="ب">
-    <div class="question-number">19</div>
-    <p>في عصر الثورة الكهربائية - الميكانيكية كان أول ظهور ل:</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q19" value="أ">
-            <span class="option-label">أ) الآلة الحاسبة</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q19" value="ب">
-            <span class="option-label">ب) الكمبيوتر الرقمي</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q19" value="ج">
-            <span class="option-label">ج) الطابعة</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q19" value="د">
-            <span class="option-label">د) الهاتف المحمول</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) الكمبيوتر الرقمي
-    </div>
-</div>
-
-<div class="question" data-answer="أ">
-    <div class="question-number">20</div>
-    <p>تم التواصل مع الأشخاص حول العالم باستخدام البريد الإلكتروني في عصر:</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q20" value="أ">
-            <span class="option-label">أ) الثورة الإلكترونية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q20" value="ب">
-            <span class="option-label">ب) الثورة الميكانيكية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q20" value="ج">
-            <span class="option-label">ج) الثورة الكهربائية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q20" value="د">
-            <span class="option-label">د) ما قبل الثورة الميكانيكية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) الثورة الإلكترونية
-    </div>
-</div>
-
-<div class="question" data-answer="ج">
-    <div class="question-number">21</div>
-    <p>استخدمت الكهرباء للمرة الأولى في عصر الثورة:</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q21" value="أ">
-            <span class="option-label">أ) الميكانيكية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q21" value="ب">
-            <span class="option-label">ب) المعلوماتية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q21" value="ج">
-            <span class="option-label">ج) الكهربائية/الميكانيكية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q21" value="د">
-            <span class="option-label">د) الإلكترونية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) الكهربائية/الميكانيكية
-    </div>
-</div>
-
-<div class="question" data-answer="أ">
-    <div class="question-number">22</div>
-    <p>يستخدم جهاز ........ في الكشف عن العملات المعدنية في باطن الأرض.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q22" value="أ">
-            <span class="option-label">أ) مقياس المغناطيسية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q22" value="ب">
-            <span class="option-label">ب) الرادار المخترق للأرض</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q22" value="ج">
-            <span class="option-label">ج) طائرات بدون طيار</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q22" value="د">
-            <span class="option-label">د) نظام تحديد المواقع العالمي GPS</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) مقياس المغناطيسية
-    </div>
-</div>
-
-<div class="question" data-answer="د">
-    <div class="question-number">23</div>
-    <p>يعتمد ........ على الأقمار الصناعية في تحديد أماكن الأشياء.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q23" value="أ">
-            <span class="option-label">أ) مقياس المغناطيسية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q23" value="ب">
-            <span class="option-label">ب) الرادار المخترق للأرض</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q23" value="ج">
-            <span class="option-label">ج) طائرات بدون طيار</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q23" value="د">
-            <span class="option-label">د) نظام تحديد المواقع</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) نظام تحديد المواقع
-    </div>
-</div>
-
-<div class="question" data-answer="د">
-    <div class="question-number">24</div>
-    <p>يمكن التقاط الصور الفوتوغرافية باستخدام:</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q24" value="أ">
-            <span class="option-label">أ) مقياس المغناطيسية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q24" value="ب">
-            <span class="option-label">ب) نظام تحديد المواقع GPS</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q24" value="ج">
-            <span class="option-label">ج) الرادار المخترق للأرض</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q24" value="د">
-            <span class="option-label">د) طائرات بدون طيار</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) طائرات بدون طيار
-    </div>
-</div>
-
-<div class="question" data-answer="د">
-    <div class="question-number">25</div>
-    <p>يعتمد جهاز مقياس المغناطيسية على ........ للكشف عن الأجسام المدفونة تحت الأرض.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q25" value="أ">
-            <span class="option-label">أ) الرادار</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q25" value="ب">
-            <span class="option-label">ب) الأقمار الصناعية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q25" value="ج">
-            <span class="option-label">ج) طائرات بدون طيار</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q25" value="د">
-            <span class="option-label">د) قياس المجال المغناطيسي</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) قياس المجال المغناطيسي
-    </div>
-</div>
-
-<div class="question" data-answer="د">
-    <div class="question-number">26</div>
-    <p>يعتمد نظام تحديد المواقع العالمي GPS على ........ لتحديد الأماكن والمواقع.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q26" value="أ">
-            <span class="option-label">أ) قياس المجال المغناطيسي</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q26" value="ب">
-            <span class="option-label">ب) الرادار</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q26" value="ج">
-            <span class="option-label">ج) طائرات بدون طيار</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q26" value="د">
-            <span class="option-label">د) الأقمار الصناعية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) الأقمار الصناعية
-    </div>
-</div>
-
-<div class="question" data-answer="د">
-    <div class="question-number">27</div>
-    <p>يمكن استخدام ........ لتحديد أماكن الأشياء تحت الأرض.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q27" value="أ">
-            <span class="option-label">أ) الطائرات</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q27" value="ب">
-            <span class="option-label">ب) الصور الفوتوغرافية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q27" value="ج">
-            <span class="option-label">ج) نظام تحديد المواقع العالمي</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q27" value="د">
-            <span class="option-label">د) الرادار المخترق للأرض</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) الرادار المخترق للأ зем
-    </div>
-</div>
-
-<div class="question" data-answer="د">
-    <div class="question-number">28</div>
-    <p>اعتمد علماء الآثار على ........ للبحث عن المعادن تحت الأرض.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q28" value="أ">
-            <span class="option-label">أ) الطائرات</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q28" value="ب">
-            <span class="option-label">ب) الصور الفوتوغرافية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q28" value="ج">
-            <span class="option-label">ج) نظام تحديد المواقع العالمي</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q28" value="د">
-            <span class="option-label">د) مقياس المغناطيسية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) مقياس المغناطيسية
-    </div>
-</div>
-
-<div class="question" data-answer="ج">
-    <div class="question-number">29</div>
-    <p>يعرف عصر ........ بعصر الثورة المعلوماتية وظهر فيه اختراعات وإنجازات مذهلة.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q29" value="أ">
-            <span class="option-label">أ) الثورة الكهربائية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q29" value="ب">
-            <span class="option-label">ب) ما قبل الثورة الميكانيكية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q29" value="ج">
-            <span class="option-label">ج) الثورة الإلكترونية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q29" value="د">
-            <span class="option-label">د) الثورة الميكانيكية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) الثورة الإلكترونية
-    </div>
-</div>
-
-<div class="question" data-answer="ج">
-    <div class="question-number">30</div>
-    <p>يعرف عصر ........ بعصر الثورة المعلوماتية وظهر فيه اختراعات وإنجازات مذهلة.</p>
-    <div class="options">
-        <label class="option">
-            <input type="radio" name="q30" value="أ">
-            <span class="option-label">أ) الثورة الكهربائية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q30" value="ب">
-            <span class="option-label">ب) ما قبل الثورة الميكانيكية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q30" value="ج">
-            <span class="option-label">ج) الثورة الإلكترونية</span>
-        </label>
-        <label class="option">
-            <input type="radio" name="q30" value="د">
-            <span class="option-label">د) الثورة الميكانيكية</span>
-        </label>
-    </div>
-    <div class="correct-answer" style="display: none;">
-        <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) الثورة الإلكترونية
-    </div>
-    </div>
-               
-        
-            </div>
-            <button id="submit" class="btn btn-primary btn-lg btn-center" disabled>
-                <i class="fas fa-paper-plane"></i> سلم الإجابات
-            </button>
-            <div id="result"></div>
-            <div id="correction"></div>
-        </div>
-    </div>
-    <div id="celebration" class="celebration-effect" style="display: none;"></div>
-    <audio id="victorySound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3" preload="auto" muted></audio>
-    <script src="script.js"></script>
-</body>
-</html>
