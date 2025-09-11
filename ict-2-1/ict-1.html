@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> امتحان الصف الثاني الاعدادي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    
+    <div class="container">
+        <div id="name-page" class="name-page active">
+            <h1><i class="fas fa-laptop"></i> اختبار  الصف الثاني الاعدادي</h1>
+            <div class="school-info">
+                <p><i class="fas fa-user-graduate"></i>اختبار  تكنولوجيا الصف الثاني الاعدادي</p>
+                <p><i class="fas fa-question-circle"></i> عدد الأسئلة: 30 سؤال</p>
+                <p><i class="fas fa-star"></i> الدرجة الكاملة: 30</p>
+            </div>
+            <div class="name-input">
+                <p><i class="fas fa-user"></i> اكتب اسمك لتبدأ الامتحان:</p>
+                <div class="input-group">
+                    <input type="text" id="studentName" placeholder="اسمك الثلاثي هنا" onkeypress="if(event.key === 'Enter') startQuiz()">
+                    <i class="fas fa-sign-in-alt"></i>
+                </div>
+            </div>
+            <button id="startQuiz" class="btn btn-primary btn-lg btn-center">
+                <i class="fas fa-play"></i> ابدأ الامتحان
+            </button>
+        </div>
+        <div id="quiz-page" class="quiz-page">
+            <h1><i class="fas fa-laptop"></i> اختبار الدرس الاول </h1>
+            <div class="school-info">
+                <p><i class="fas fa-user"></i> الطالب: <span id="displayName"></span></p>
+                <p><i class="fas fa-book-open"></i> إعداد: م. محمد بسيوني – 2B-SCHOOL</p>
+                <p><i class="fas fa-question-circle"></i> الأسئلة: <span id="progressText">0/20</span></p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+<div id="quiz">
+    <h2><i class="fas fa-check-circle"></i> أولاً: اختر الإجابة الصحيحة (10 درجات)</h2>
+    
+    <div class="question" data-answer="ب">
+        <div class="question-number">1</div>
+        <p>الذكاء الاصطناعي يساعد في:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q1" value="أ">
+                <span class="option-label">أ) تشغيل الكهرباء فقط</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="ب">
+                <span class="option-label">ب) تحليل البيانات واتخاذ القرارات</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="ج">
+                <span class="option-label">ج) ربط الأجهزة بالإنترنت</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="د">
+                <span class="option-label">د) قياس نسبة الأمطار</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) تحليل البيانات واتخاذ القرارات
+        </div>
+    </div>
+
+    <div class="question" data-answer="ج">
+        <div class="question-number">2</div>
+        <p>الجهاز الذي يقيس جودة الهواء هو:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q2" value="أ">
+                <span class="option-label">أ) الروبوت</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q2" value="ب">
+                <span class="option-label">ب) الإنترنت</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q2" value="ج">
+                <span class="option-label">ج) أجهزة الاستشعار</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q2" value="د">
+                <span class="option-label">د) البرامج</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) أجهزة الاستشعار
+        </div>
+    </div>
+
+    <div class="question" data-answer="ج">
+        <div class="question-number">3</div>
+        <p>إنترنت الأشياء يربط:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q3" value="أ">
+                <span class="option-label">أ) البرامج بالذكاء الاصطناعي</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q3" value="ب">
+                <span class="option-label">ب) الإنسان بالروبوت</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q3" value="ج">
+                <span class="option-label">ج) الأجهزة بالإنترنت</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q3" value="د">
+                <span class="option-label">د) أجهزة الاستشعار فقط</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) الأجهزة بالإنترنت
+        </div>
+    </div>
+
+    <div class="question" data-answer="ب">
+        <div class="question-number">4</div>
+        <p>السيارة ذاتية القيادة مثال على:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q4" value="أ">
+                <span class="option-label">أ) الأجهزة التقليدية</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q4" value="ب">
+                <span class="option-label">ب) الأنظمة الذكية المترابطة</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q4" value="ج">
+                <span class="option-label">ج) برامج الحاسوب فقط</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q4" value="د">
+                <span class="option-label">د) الإنترنت</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) الأنظمة الذكية المترابطة
+        </div>
+    </div>
+
+    <div class="question" data-answer="أ">
+        <div class="question-number">5</div>
+        <p>الروبوت المنزلي يستطيع:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q5" value="أ">
+                <span class="option-label">أ) تنظيف الأرضيات والتحرك بمفرده</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q5" value="ب">
+                <span class="option-label">ب) تصفح الإنترنت</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q5" value="ج">
+                <span class="option-label">ج) تحليل البيانات</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q5" value="د">
+                <span class="option-label">د) التحكم في الكهرباء</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: أ) تنظيف الأرضيات والتحرك بمفرده
+        </div>
+    </div>
+
+    <div class="question" data-answer="ج">
+        <div class="question-number">6</div>
+        <p>عند حدوث فيضان، ترسل التحذيرات المبكرة بواسطة:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q6" value="أ">
+                <span class="option-label">أ) الروبوتات</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q6" value="ب">
+                <span class="option-label">ب) الإنترنت</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q6" value="ج">
+                <span class="option-label">ج) الذكاء الاصطناعي</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q6" value="د">
+                <span class="option-label">د) البرامج</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) الذكاء الاصطناعي
+        </div>
+    </div>
+
+    <div class="question" data-answer="د">
+        <div class="question-number">7</div>
+        <p>من أمثلة التحديات البيئية:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q7" value="أ">
+                <span class="option-label">أ) تلوث الهواء</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q7" value="ب">
+                <span class="option-label">ب) نقص المياه</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q7" value="ج">
+                <span class="option-label">ج) ارتفاع الحرارة</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q7" value="د">
+                <span class="option-label">د) جميع ما سبق</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: د) جميع ما سبق
+        </div>
+    </div>
+
+    <div class="question" data-answer="ج">
+        <div class="question-number">8</div>
+        <p>المساعد الصوتي يعتمد على:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q8" value="أ">
+                <span class="option-label">أ) الروبوت فقط</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q8" value="ب">
+                <span class="option-label">ب) البرامج</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q8" value="ج">
+                <span class="option-label">ج) إنترنت الأشياء والذكاء الاصطناعي</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q8" value="د">
+                <span class="option-label">د) أجهزة الاستشعار</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ج) إنترنت الأشياء والذكاء الاصطناعي
+        </div>
+    </div>
+
+    <div class="question" data-answer="ب">
+        <div class="question-number">9</div>
+        <p>الهدف من الأنظمة الذكية هو:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q9" value="أ">
+                <span class="option-label">أ) زيادة وقت العمل</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q9" value="ب">
+                <span class="option-label">ب) توفير الوقت والجهد وجعل الحياة أسهل</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q9" value="ج">
+                <span class="option-label">ج) زيادة التلوث</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q9" value="د">
+                <span class="option-label">د) منع التطور</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) توفير الوقت والجهد وجعل الحياة أسهل
+        </div>
+    </div>
+
+    <div class="question" data-answer="ب">
+        <div class="question-number">10</div>
+        <p>الزراعة الذكية تعتمد على:</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q10" value="أ">
+                <span class="option-label">أ) الروبوت فقط</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q10" value="ب">
+                <span class="option-label">ب) أجهزة الاستشعار + IoT + AI</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q10" value="ج">
+                <span class="option-label">ج) الإنترنت فقط</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q10" value="د">
+                <span class="option-label">د) البرامج المكتبية</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: ب) أجهزة الاستشعار + IoT + AI
+        </div>
+    </div>
+
+ <h2><i class="fas fa-check-circle"></i> ثانياً: ضع علامة (✓) أو (✗) (10 درجات)</h2>
+    
+    <div class="question" data-answer="✓">
+        <div class="question-number">11</div>
+        <p>يمكن للذكاء الاصطناعي معرفة إذا كانت التربة تحتاج للري.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q11" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q11" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✓) صحيح
+        </div>
+    </div>
+
+    <div class="question" data-answer="✓">
+        <div class="question-number">12</div>
+        <p>إنترنت الأشياء يربط بين الأجهزة المختلفة عبر الإنترنت.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q12" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q12" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✓) صحيح
+        </div>
+    </div>
+
+    <div class="question" data-answer="✗">
+        <div class="question-number">13</div>
+        <p>الروبوت مجرد برنامج على الكمبيوتر.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q13" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q13" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✗) خطأ
+        </div>
+    </div>
+
+    <div class="question" data-answer="✓">
+        <div class="question-number">14</div>
+        <p>أجهزة الاستشعار تستخدم لقياس الحرارة والرطوبة.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q14" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q14" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✓) صحيح
+        </div>
+    </div>
+
+    <div class="question" data-answer="✓">
+        <div class="question-number">15</div>
+        <p>الأنظمة الذكية تساعد في مواجهة الكوارث الطبيعية.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q15" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q15" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✓) صحيح
+        </div>
+    </div>
+
+    <div class="question" data-answer="✗">
+        <div class="question-number">16</div>
+        <p>المساعد الصوتي لا يحتاج إلى إنترنت ليعمل.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q16" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q16" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✗) خطأ
+        </div>
+    </div>
+
+    <div class="question" data-answer="✓">
+        <div class="question-number">17</div>
+        <p>السيارة ذاتية القيادة مثال على استخدام الذكاء الاصطناعي.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q17" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q17" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✓) صحيح
+        </div>
+    </div>
+
+    <div class="question" data-answer="✓">
+        <div class="question-number">18</div>
+        <p>يمكن للروبوت أن ينفذ مهام تشبه ما يقوم به الإنسان.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q18" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q18" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✓) صحيح
+        </div>
+    </div>
+
+    <div class="question" data-answer="✗">
+        <div class="question-number">19</div>
+        <p>الأنظمة الذكية لا تؤثر على حياتنا اليومية.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q19" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q19" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✗) خطأ
+        </div>
+    </div>
+
+    <div class="question" data-answer="✓">
+        <div class="question-number">20</div>
+        <p>يمكن للأنظمة الذكية المترابطة توفير الطاقة وحماية البيئة.</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q20" value="✓">
+                <span class="option-label">(✓) صحيح</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="q20" value="✗">
+                <span class="option-label">(✗) خطأ</span>
+            </label>
+        </div>
+        <div class="correct-answer" style="display: none;">
+            <i class="fas fa-check-circle"></i> الإجابة الصحيحة: (✓) صحيح
+        </div>
+    </div>
+
+
+    <h2><i class="fas fa-link"></i> ثالثًا : صِل العمود (أ) بما يناسبه من العمود (ب) (5 درجات)</h2>
+    
+    <div class="matching-question"> 
+        <div class="question-instruction"> 
+            <p>اسحب كل عنصر من العمود (أ) وضعه بجوار العنصر المناسب له في العمود (ب):</p> 
+        </div> 
+        
+        <div class="matching-container"> 
+            <div class="column column-a"> 
+                <h3>العمود (أ)</h3> 
+                <div class="draggable-item" data-correct="أ" draggable="true" id="item21">الذكاء الاصطناعي (AI)</div> 
+                <div class="draggable-item" data-correct="ب" draggable="true" id="item22">إنترنت الأشياء (IoT)</div> 
+                <div class="draggable-item" data-correct="ج" draggable="true" id="item23">الروبوت</div> 
+                <div class="draggable-item" data-correct="د" draggable="true" id="item24">أجهزة الاستشعار</div> 
+                <div class="draggable-item" data-correct="هـ" draggable="true" id="item25">السيارة ذاتية القيادة</div> 
+            </div> 
+                
+            <div class="column column-b"> 
+                <h3>العمود (ب)</h3> 
+                <div class="drop-target" data-value="ب">(ب) يربط الأجهزة بالإنترنت</div> 
+                <div class="drop-target" data-value="د">(د) تقيس التربة والهواء والماء</div> 
+                <div class="drop-target" data-value="أ">(أ) يحلل البيانات ويقترح حلول</div> 
+                <div class="drop-target" data-value="هـ">(هـ) مثال لتكامل AI + IoT + روبوتات</div>
+                <div class="drop-target" data-value="ج">(ج) ينفذ المهام عمليًا</div> 
+ 
+            </div> 
+        </div> 
+    </div>
+
+    <h2><i class="fas fa-list-alt"></i> رابعًا: اختر من القائمة المنسدلة (5 درجات)</h2>
+    
+    <div class="dropdown-question">
+        <div class="question-instruction">
+            <p>اختر الإجابة الصحيحة من القائمة المنسدلة لإكمال كل جملة:</p>
+        </div>
+        
+        <div class="dropdown-item">
+            <p>1. عند نقص المياه في التربة يرسل التحذير بواسطة 
+                <select class="answer-dropdown" name="q31" data-correct="IoT">
+                    <option value="">-- اختر --</option>
+                    <option value="AI">AI</option>
+                    <option value="IoT">IoT</option>
+                    <option value="روبوت">روبوت</option>
+                    <option value="برنامج">برنامج</option>
+                </select>
+            </p>
+        </div>
+        
+        <div class="dropdown-item">
+            <p>2. الروبوت المنزلي الذي ينظف الأرضيات يعتبر 
+                <select class="answer-dropdown" name="q32" data-correct="نظام ذكي">
+                    <option value="">-- اختر --</option>
+                    <option value="AI">AI</option>
+                    <option value="جهاز استشعار">جهاز استشعار</option>
+                    <option value="نظام ذكي">نظام ذكي</option>
+                    <option value="إنترنت الأشياء">إنترنت الأشياء</option>
+                </select>
+            </p>
+        </div>
+        
+        <div class="dropdown-item">
+            <p>3. المساعد الصوتي يبحث عن المعلومات عبر 
+                <select class="answer-dropdown" name="q33" data-correct="الذكاء الاصطناعي">
+                    <option value="">-- اختر --</option>
+                    <option value="الذكاء الاصطناعي">الذكاء الاصطناعي</option>
+                    <option value="IoT">IoT</option>
+                    <option value="الروبوت">الروبوت</option>
+                    <option value="البرامج">البرامج</option>
+                </select>
+            </p>
+        </div>
+        
+        <div class="dropdown-item">
+            <p>4. السيارة الذكية تتوقف تلقائيًا عند عائق بسبب 
+                <select class="answer-dropdown" name="q34" data-correct="AI">
+                    <option value="">-- اختر --</option>
+                    <option value="AI">AI</option>
+                    <option value="IoT">IoT</option>
+                    <option value="الروبوت">الروبوت</option>
+                    <option value="البرامج">البرامج</option>
+                </select>
+            </p>
+        </div>
+        
+        <div class="dropdown-item">
+            <p>5. عند حدوث تلوث في الهواء يتم قياسه باستخدام 
+                <select class="answer-dropdown" name="q35" data-correct="أجهزة استشعار">
+                    <option value="">-- اختر --</option>
+                    <option value="AI">AI</option>
+                    <option value="الروبوت">الروبوت</option>
+                    <option value="أجهزة استشعار">أجهزة استشعار</option>
+                    <option value="الإنترنت">الإنترنت</option>
+                </select>
+            </p>
+        </div>
+        
+        <div class="dropdown-feedback" style="display: none;">
+            <i class="fas fa-check-circle"></i> <span class="feedback-text"></span>
+        </div>
+    </div>
+
+<button id="submit" class="btn btn-primary btn-lg btn-center" disabled>
+                <i class="fas fa-paper-plane"></i> سلم الإجابات
+            </button>
+            <div id="result"></div>
+            <div id="correction"></div>
+        </div>
+    </div>
+    <div id="celebration" class="celebration-effect" style="display: none;"></div>
+    <audio id="victorySound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3" preload="auto" muted></audio>
+
+<style>
+</style>
+
+<script>
+</script>            
+    <script src="script.js"></script>
+</body>
+</html>
