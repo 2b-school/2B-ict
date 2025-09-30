@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     { value: "أ", text: "تقليل كمية النفايات" },
                     { value: "ب", text: "استخدام أنظمة ري ذكية" },
                     { value: "ج", text: "استخدام أجهزة كهربائية موفرة" },
-                    { value: "د", text: "إعادة تدوير ومعالجة مياه الصرف" }
+                    { value: "د", text: "استخدام مباني جيدة العزل والتهوية" }
                 ],
                 correctAnswer: "ب"
             },
@@ -73,7 +73,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     { value: "أ", text: "زيادة الاعتماد على الخامات" },
                     { value: "ب", text: "تقليل الاعتماد على الخامات" },
                     { value: "ج", text: "استهلاك مصادر الطاقة" },
-                    { value: "د", text: "تحسين كفاءة الخدمات وتسهيل الوصول" }
+                    { value: "د", text: "خفض الانبعاثات الضارة" }
                 ],
                 correctAnswer: "ب"
             },
@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     { value: "أ", text: "التكنولوجيا التقليدية" },
                     { value: "ب", text: "التكنولوجيا الخضراء" },
                     { value: "ج", text: "الاحتباس الحراري" },
-                    { value: "د", text: "التكنولوجيا النظيفة" }
+                    { value: "د", text: "التكنولوجيا المتجددة" }
                 ],
                 correctAnswer: "ب"
             },
@@ -128,7 +128,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     { value: "أ", text: "تحسين كفاءة استخدام الموارد" },
                     { value: "ب", text: "استخدام مصادر طاقة متجددة" },
                     { value: "ج", text: "زيادة استهلاك الموارد" },
-                    { value: "د", text: "خفض الهدر وتحسين إدارة الموارد" }
+                    { value: "د", text: "خفض الانبعاثات الضارة" }
                 ],
                 correctAnswer: "أ"
             },
@@ -161,7 +161,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     { value: "أ", text: "خفض الانبعاثات الضارة" },
                     { value: "ب", text: "زيادة استخدام الطاقة" },
                     { value: "ج", text: "الاعتماد على الطاقة البترولية" },
-                    { value: "د", text: "تحسين كفاءة استخدام الموارد" }
+                    { value: "د", text: "تحسين كفاءة سير العمل" }
                 ],
                 correctAnswer: "أ"
             },
@@ -171,8 +171,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 options: [
                     { value: "أ", text: "الوصول إلى الخدمات الحكومية" },
                     { value: "ب", text: "توفير طرق دفع سهلة وسريعة" },
-                    { value: "ج", "text": "إرسال المعلومات" },
-                    { value: "د", text: "التسوق الإلكتروني والدفع عبر الإنترنت" }
+                    { value: "ج", text: "إرسال المعلومات" },
+                    { value: "د", text: "المحافظة على البيئة من التلوث" }
                 ],
                 correctAnswer: "ب"
             },
