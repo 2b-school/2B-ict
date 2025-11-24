@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل بيانات الطلاب</title>
+    
+    <link rel="icon" href="logoo.png" type="image/png" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط أكثر حداثة */
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 15px; /* زوايا أنعم */
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* ظل أكثر نعومة */
+            text-align: center; /* توسيط المحتوى بشكل عام */
+        }
+
+        /* 2. تنسيق صورة اللوجو والأنيميشن */
+        .sticker-logo {
+            width: 100px; /* حجم مناسب للصورة */
+            height: auto;
+            margin-bottom: 10px;
+            
+            /* تطبيق الأنيميشن */
+            animation: popIn 1s ease-out, float 3s ease-in-out infinite;
+        }
+
+        /* تعريف حركة الدخول (Pop In) */
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* تعريف حركة الطفو المستمرة (Float) */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); } /* تتحرك للأعلى قليلاً */
+            100% { transform: translateY(0px); }
+        }
+
+        h2 {
+            margin: 10px 0;
+            color: #333;
+            font-size: 22px;
+        }
+
+        /* 3. تنسيق النص الوصفي الجديد */
+        .description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #555;
+            text-align: right; /* إعادة محاذاة العناوين لليمين */
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: border 0.3s, box-shadow 0.3s;
+            font-size: 14px;
+        }
+        input:focus, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+        }
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background: linear-gradient(45deg, #007bff, #0056b3); /* تدرج لوني للزر */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+        #linkBox {
+            margin-top: 20px;
+            display: none;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #eee;
+        }
+        a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <img src="logo.jpg" alt="Logo" class="sticker-logo" />
+
+        <h2>تسجيل بيانات الطلاب</h2>
+        
+        <p class="description">
+            منصة إدخال البيانات للالتحاق بجروبات<br>
+            <strong>البرمجة والذكاء الاصطناعي</strong>
+        </p>
+
+        <label for="name">اسم الطالب:</label>
+        <input type="text" id="name" placeholder="اكتب اسمك ثلاثي" />
+
+        <label for="gender">النوع:</label>
+        <select id="gender">
+            <option value="">اختر النوع</option>
+            <option value="male">ذكر</option>
+            <option value="female">أنثى</option>
+        </select>
+
+        <button onclick="showLink()">عرض لينك الجروب</button>
+
+        <div id="linkBox"></div>
+    </div>
+
+    <script>
+        function showLink() {
+            const nameInput = document.getElementById("name");
+            const nameValue = nameInput.value.trim();
+            const gender = document.getElementById("gender").value;
+            const linkBox = document.getElementById("linkBox");
+
+            linkBox.style.display = "block";
+
+            if (nameValue === "") {
+                linkBox.innerHTML = "<p class='error'>من فضلك اكتب اسمك أولاً</p>";
+                nameInput.focus();
+                return;
+            }
+
+            if (!gender) {
+                linkBox.innerHTML = "<p class='error'>من فضلك اختر النوع</p>";
+                return;
+            }
+
+            let link = "";
+            if (gender === "female") {
+                link = "https://chat.whatsapp.com/DlLo5ABbWhQ20mx5pXwODm";
+            } else if (gender === "male") {
+                link = "https://chat.whatsapp.com/KledonV8KqlLBJwcJmKGxk";
+            }
+
+            linkBox.innerHTML = `
+                <p style="color:#28a745; margin-bottom:10px;">مرحباً <strong>${nameValue}</strong>،</p>
+                <p style="margin-bottom:5px;">لينك الجروب المناسب لك:</p>
+                <a href="${link}" target="_blank">اضغط هنا للانضمام</a>
+            `;
+        }
+    </script>
+</body>
+</html>
