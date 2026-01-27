@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة امتحانات البرمجة | 2B-School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ستايل مخصص للبوابة ليكون متناغماً مع نظام الامتحانات */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f1f5f9, #e0e7ff);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .portal-container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: var(--shadow-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            border-top: 8px solid var(--primary);
+        }
+
+        .header-section i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            color: var(--dark);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .exam-card {
+            background: var(--light);
+            border: 2px solid #e2e8f0;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.1);
+        }
+
+        .exam-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .exam-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .exam-card p {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-enter {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 0.8rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .exam-card:hover .btn-enter {
+            background: var(--primary-dark);
+            padding: 0.8rem 2.5rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .portal-container { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-container">
+        <div class="header-section">
+            <i class="fas fa-laptop-code"></i>
+            <h1>منصة امتحانات البرمجة</h1>
+            <p class="subtitle">2B-School | الصف الأول الثانوي</p>
+        </div>
+
+        <div class="exam-grid">
+            <a href="https://2b-school.github.io/2B-ict/qureo-18/ict-2.html" class="exam-card">
+                <i class="fas fa-file-code"></i>
+                <h3>امتحان الفصل 18</h3>
+                <p>مراجعة شاملة على أساسيات CSS والـ Selectors</p>
+                <span class="btn-enter">دخول الامتحان <i class="fas fa-arrow-left"></i></span>
+            </a>
+
+            <a href="https://2b-school.github.io/2B-ict/qureo-19/ict-2.html" class="exam-card">
+                <i class="fas fa-code-branch"></i>
+                <h3>امتحان الفصل 19</h3>
+                <p>تطبيقات عملية متقدمة وتنسيقات النصوص والخلفيات</p>
+                <span class="btn-enter">دخول الامتحان <i class="fas fa-arrow-left"></i></span>
+            </a>
+        </div>
+
+        <footer>
+            <p><i class="fas fa-chalkboard-teacher"></i> إشراف: مستر محمد بسيوني</p>
+            <p>&copy; 2024 جميع الحقوق محفوظة لمدرسة 2B-School</p>
+        </footer>
+    </div>
+
+</body>
+</html>
