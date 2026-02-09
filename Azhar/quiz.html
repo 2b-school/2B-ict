@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار المفاهيم التربوية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --correct-color: #27ae60;
+            --wrong-color: #e74c3c;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .option-item {
+            margin-bottom: 10px;
+        }
+
+        .option-label {
+            display: block;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #e9ecef;
+        }
+
+        /* تنسيق زر الاختيار */
+        input[type="radio"] {
+            margin-left: 10px;
+            transform: scale(1.2);
+        }
+
+        /* تنسيق عند اختيار إجابة */
+        input[type="radio"]:checked + span {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* تنسيقات التصحيح */
+        .correct-answer {
+            background-color: rgba(39, 174, 96, 0.2) !important;
+            border-color: var(--correct-color) !important;
+            color: var(--correct-color);
+        }
+
+        .wrong-answer {
+            background-color: rgba(231, 76, 60, 0.2) !important;
+            border-color: var(--wrong-color) !important;
+            color: var(--wrong-color);
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button.submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: transform 0.2s;
+        }
+
+        button.submit-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        #result-display {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>أسئلة المفاهيم التربوية وطرائق التدريس</h1>
+        <p>أجب عن الأسئلة التالية ثم اضغط على "عرض النتيجة"</p>
+    </header>
+
+    <div id="quiz-container">
+        </div>
+
+    <div class="controls">
+        <button class="submit-btn" onclick="checkAnswers()">اعرض النتيجة</button>
+        <button class="submit-btn" style="background-color: #95a5a6; margin-right: 10px;" onclick="location.reload()">إعادة الاختبار</button>
+    </div>
+
+    <div id="result-display"></div>
+</div>
+
+<script>
+    // بيانات الأسئلة
+    const quizData = [
+        { question: "التعلم القائم على المشروعات يساعد الطلاب على ربط التعلم بالحياة الواقعية.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي مما يلي يعد من أدوار المعلم في التعلم النشط؟", options: ["ملقن للمعلومات", "موجه ومرشد", "مراقب فقط", "مصدر وحيد للمعلومة"], correct: 1 },
+        { question: "التقويم البنائي يتم أثناء عملية التعلم.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "من خصائص الهدف السلوكي الجيد:", options: ["غامض", "غير قابل للقياس", "محدد وقابل للقياس", "يركز على المحتوى فقط"], correct: 2 },
+        { question: "تساعد استراتيجيات التدريس الحديثة على تنمية التفكير الناقد.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي مما يلي يعد أسلوب تعزيز معنوي؟", options: ["الدرجات", "الجوائز المادية", "كلمة شكر", "الحرمان"], correct: 2 },
+        { question: "الفروق الفردية تعني أن جميع الطلاب يتعلمون بنفس السرعة.", options: ["صح", "خطأ"], correct: 1 },
+        { question: "إدارة الصف تهدف إلى توفير بيئة تعليمية آمنة ومنظمة.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي أنواع التعلم يعتمد على الحوار وتبادل الآراء؟", options: ["التعلم التلقيني", "التعلم الذاتي", "التعلم التعاوني", "التعلم الفردي"], correct: 2 },
+        { question: "التخطيط الجيد للدرس يقلل من المشكلات الصفية.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي مما يلي من مهارات القرن الحادي والعشرين؟", options: ["الحفظ فقط", "التفكير الناقد", "الاعتماد على المعلم", "التلقين"], correct: 1 },
+        { question: "التعلم الذاتي يعتمد على دافعية المتعلم.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "من أهداف التقويم التشخيصي:", options: ["الحكم النهائي", "معرفة نقاط الضعف والقوة", "إعطاء درجات", "إنهاء المنهج"], correct: 1 },
+        { question: "البيئة الصفية الإيجابية تشجع على المشاركة.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي مما يلي مثال على وسيلة تعليمية سمعية؟", options: ["السبورة", "الخرائط", "الراديو", "الصور"], correct: 2 },
+        { question: "الهدف الوجداني يهتم بالمشاعر والاتجاهات.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "التعلم بالاكتشاف يجعل الطالب متلقيًا سلبيًا.", options: ["صح", "خطأ"], correct: 1 },
+        { question: "أي مما يلي أسلوب تدريس يعتمد على طرح الأسئلة؟", options: ["المحاضرة", "المناقشة", "التلقين", "الإملاء"], correct: 1 },
+        { question: "التغذية الراجعة تساعد الطالب على تحسين أدائه.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "التقويم المستمر يساعد في تحسين عملية التعلم.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي مما يلي من خصائص المعلم الناجح؟", options: ["العدل بين الطلاب", "التفرقة بينهم", "إهمال آرائهم", "القسوة"], correct: 0 },
+        { question: "التعلم الإلكتروني يمكن أن يدعم التعلم داخل الفصل.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "استراتيجية لعب الأدوار تساعد على تنمية المهارات الاجتماعية.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي مما يلي يعد تقويمًا أدائيًا؟", options: ["الاختبار التحريري", "الملاحظة", "الأسئلة المقالية", "الصح والخطأ"], correct: 1 },
+        { question: "التحفيز المستمر يزيد من دافعية الطلاب.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "التعلم القائم على حل المشكلات ينمي التفكير الإبداعي.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "أي مما يلي سلوك سلبي في الإدارة الصفية؟", options: ["الحزم", "المرونة", "التجاهل الدائم", "التشجيع"], correct: 2 },
+        { question: "احترام آراء الطلاب يعزز ثقتهم بأنفسهم.", options: ["صح", "خطأ"], correct: 0 },
+        { question: "التدريس الجيد يعتمد فقط على الكتاب المدرسي.", options: ["صح", "خطأ"], correct: 1 }
+    ];
+
+    const quizContainer = document.getElementById('quiz-container');
+    const resultDisplay = document.getElementById('result-display');
+
+    // دالة لعرض الأسئلة عند تحميل الصفحة
+    function renderQuiz() {
+        quizData.forEach((item, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-card';
+            questionDiv.id = `q-card-${index}`;
+
+            let optionsHtml = '';
+            item.options.forEach((option, optIndex) => {
+                optionsHtml += `
+                    <li class="option-item">
+                        <label class="option-label" id="label-${index}-${optIndex}">
+                            <input type="radio" name="question${index}" value="${optIndex}">
+                            <span>${option}</span>
+                        </label>
+                    </li>
+                `;
+            });
+
+            questionDiv.innerHTML = `
+                <div class="question-text">${index + 1}. ${item.question}</div>
+                <ul class="options-list">
+                    ${optionsHtml}
+                </ul>
+            `;
+            quizContainer.appendChild(questionDiv);
+        });
+    }
+
+    // دالة التحقق من الإجابات وحساب النتيجة
+    function checkAnswers() {
+        let score = 0;
+        
+        quizData.forEach((item, index) => {
+            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+            const allLabels = document.querySelectorAll(`[id^="label-${index}-"]`);
+            
+            // إعادة تعيين الألوان
+            allLabels.forEach(label => {
+                label.classList.remove('correct-answer', 'wrong-answer');
+            });
+
+            // تحديد الإجابة الصحيحة وتمييزها دائماً (للفائدة التعليمية)
+            const correctLabel = document.getElementById(`label-${index}-${item.correct}`);
+            correctLabel.classList.add('correct-answer');
+
+            if (selectedOption) {
+                const answerValue = parseInt(selectedOption.value);
+                if (answerValue === item.correct) {
+                    score++;
+                } else {
+                    // إذا كانت الإجابة خاطئة، لونها بالأحمر
+                    const wrongLabel = document.getElementById(`label-${index}-${answerValue}`);
+                    wrongLabel.classList.add('wrong-answer');
+                }
+            }
+        });
+
+        // عرض النتيجة النهائية
+        resultDisplay.style.display = 'block';
+        resultDisplay.innerHTML = `النتيجة: ${score} من ${quizData.length}`;
+        
+        if (score === quizData.length) {
+            resultDisplay.style.color = 'var(--correct-color)';
+            resultDisplay.innerHTML += " <br> ممتاز! 🎉";
+        } else if (score > quizData.length / 2) {
+            resultDisplay.style.color = '#e67e22';
+            resultDisplay.innerHTML += " <br> جيد جداً، حاول تحسين إجاباتك.";
+        } else {
+            resultDisplay.style.color = 'var(--wrong-color)';
+            resultDisplay.innerHTML += " <br> تحتاج إلى مزيد من المراجعة.";
+        }
+
+        // التمرير إلى أسفل الصفحة لرؤية النتيجة
+        resultDisplay.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // تشغيل الدالة عند البدء
+    renderQuiz();
+</script>
+
+</body>
+</html>
