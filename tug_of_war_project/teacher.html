@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المعلم - أكاديمية المغامرة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ترتيب البطاقات بجوار بعضها باستخدام نفس ألوانك الأصلية */
+        .dashboard-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-grid .info-card {
+            flex: 1;
+            min-width: 300px;
+            margin: 0; /* مسح الهوامش الافتراضية لضبط الشبكة */
+            padding: 30px;
+        }
+
+        /* تنسيق زر الخروج ليتماشى مع الخلفية البنفسجية */
+        .logout-btn {
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .logout-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <header>
+            <h1 class="title" id="welcomeMessage"  > <span class="emoji-fix"> 👨‍🏫مرحباً بك يا أستاذ!   </span></h1>
+            <p class="tagline">لوحة التحكم لإدارة تحديات شد الحبل</p>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="info-card">
+                <h2><i class="fas fa-trophy" style="color: var(--accent-color);"></i> بدء التحدي</h2>
+                <p style="margin-bottom: 25px; color: var(--text-dark);">اختر المتسابقين وابدأ المنافسة الحماسية الآن!</p>
+                <button class="launch-button" onclick="location.href='game.html'">انطلاق التحدي 🚩</button>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-clipboard-list" style="color: var(--primary-color);"></i> بنك الأسئلة</h2>
+                <p style="margin-bottom: 25px; color: var(--text-dark);">إضافة أو تعديل أسئلة التحدي الخاصة بالطلاب.</p>
+                <button class="launch-button" style="background: var(--primary-color); box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);" onclick="alert('شاشة إدارة الأسئلة ستتوفر قريباً!')">إدارة الأسئلة 📝</button>
+            </div>
+        </div>
+
+        <a href="index.html" class="logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+        </a>
+    </div>
+
+    <footer class="main-footer">
+        <p>تم التصميم بواسطة: <strong>أحمد سمير، جابر محمود</strong> © 2026</p>
+    </footer>
+
+    <script>
+        // جلب اسم المعلم للترحيب به
+        document.addEventListener('DOMContentLoaded', () => {
+            const teacherName = localStorage.getItem('teacherName');
+            if (teacherName) {
+                document.getElementById('welcomeMessage').innerText = `أهلاً بك، ${teacherName} 👨‍🏫`;
+            }
+        });
+
+        // مسح الذاكرة عند تسجيل الخروج
+        function logout() {
+            localStorage.removeItem('teacherName');
+        }
+    </script>
+</body>
+</html>

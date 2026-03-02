@@ -1,0 +1,1020 @@
+/* ===================================================
+   استيراد خطوط محسّنة - Cairo + Tajawal
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;700&display=swap');
+
+/* ===================================================
+   متغيرات النظام - System Design Tokens
+   =================================================== */
+:root {
+    /* ألوان أساسية */
+    --primary:       #4a90e2;
+    --primary-light: #74b0f5;
+    --primary-dark:  #2d6bbf;
+    --secondary:     #6c5ce7;
+    --secondary-light:#9b8ff5;
+    --accent:        #ff7675;
+    --accent-light:  #ffaaaa;
+    --success:       #00cec9;
+    --gold:          #ffd700;
+
+    /* ألوان محايدة */
+    --text-dark:  #1e2533;
+    --text-mid:   #4a5568;
+    --text-light: #718096;
+    --white:      #ffffff;
+    --bg-page:    #f0f2f5;
+
+    /* تدرجات */
+    --bg-gradient:    linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-gradient:  linear-gradient(145deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.10) 100%);
+    --button-gradient:linear-gradient(135deg, #ff7675, #d63031);
+    --glow-primary:   0 0 30px rgba(74,144,226,0.4);
+    --glow-accent:    0 0 30px rgba(255,118,117,0.5);
+
+    /* زجاجية */
+    --glass-bg:     rgba(255,255,255,0.22);
+    --glass-dark:   rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.30);
+    --glass-blur:   blur(16px);
+
+    /* ظلال */
+    --shadow-sm:  0 4px 12px rgba(0,0,0,0.08);
+    --shadow-md:  0 8px 32px rgba(0,0,0,0.14);
+    --shadow-lg:  0 20px 60px rgba(0,0,0,0.20);
+    --shadow-xl:  0 30px 80px rgba(0,0,0,0.28);
+
+    /* حركة */
+    --ease-out:  cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition: all 0.35s var(--ease-out);
+    --transition-fast: all 0.18s var(--ease-out);
+
+    /* أشكال */
+    --radius-sm:  10px;
+    --radius-md:  18px;
+    --radius-lg:  28px;
+    --radius-xl:  40px;
+    --radius-full: 999px;
+}
+
+/* ===================================================
+   الوضع الداكن
+   =================================================== */
+.dark-mode {
+    --bg-gradient:  linear-gradient(135deg, #0f2027 0%, #1a1033 50%, #0f2027 100%);
+    --text-dark:    #ecf0f1;
+    --white:        #1a1a2e;
+    --glass-bg:     rgba(255,255,255,0.07);
+    --glass-border: rgba(255,255,255,0.12);
+    --bg-page:      #0f1117;
+}
+
+/* ===================================================
+   إعادة التعيين والقواعد العامة
+   =================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+    direction: rtl;
+}
+
+/* ===================================================
+   خلفية متحركة بجسيمات نجمية
+   =================================================== */
+.hero-container,
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gradient مكتوب مباشرة بدون CSS variable عشان يشتغل مع animation */
+    background: linear-gradient(135deg, #667eea, #764ba2, #6c5ce7, #a855f7, #667eea);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* طبقة الجسيمات */
+.hero-container::before,
+.login-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 60% 70%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 80px 80px, 120px 120px, 60px 60px;
+    animation: starsFloat 20s linear infinite;
+    pointer-events: none;
+}
+
+/* شبكة هندسية خفية */
+.hero-container::after,
+.login-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes starsFloat {
+    from { transform: translateY(0) rotate(0deg); }
+    to   { transform: translateY(-20px) rotate(3deg); }
+}
+
+/* ===================================================
+   الهيدر - Header
+   =================================================== */
+header {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInDown 0.9s var(--ease-out) both;
+}
+
+.title {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    /* تأثير اللمعان فقط لو المتصفح يدعمه */
+    background: linear-gradient(135deg, #fff 30%, rgba(255,215,0,0.85) 70%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* fallback لو مش مدعوم */
+    @supports not (-webkit-background-clip: text) {
+        color: #ffffff;
+        -webkit-text-fill-color: #ffffff;
+        background: none;
+    }
+    animation: textShine 4s linear infinite;
+}
+
+@keyframes textShine {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* إصلاح الإيموجي داخل النص المتدرج */
+.title .emoji-fix {
+    -webkit-text-fill-color: initial;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    display: inline-block;
+    animation: none;
+}
+
+.tagline {
+    font-size: clamp(0.95rem, 2.5vw, 1.25rem);
+    opacity: 0.88;
+    font-weight: 300;
+    margin-top: 8px;
+    color: rgba(255,255,255,0.9);
+    -webkit-text-fill-color: rgba(255,255,255,0.9);
+}
+
+/* شارة عنوان فرعي */
+.title-badge {
+    display: inline-block;
+    background: rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.4);
+    color: var(--gold);
+    -webkit-text-fill-color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
+/* ===================================================
+   انيميشن ظهور العناصر
+   =================================================== */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.88); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===================================================
+   البطاقات - Glassmorphism Cards
+   =================================================== */
+.info-card,
+.login-card {
+    /* fallback أولاً لو backdrop-filter مش مدعوم */
+    background: rgba(255, 255, 255, 0.18);
+    background: linear-gradient(145deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.10) 100%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 44px 40px;
+    border-radius: var(--radius-lg);
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    transition: var(--transition);
+    animation: scaleIn 0.85s var(--ease-spring) 0.2s both;
+    /* مهم: isolation عشان الـ backdrop-filter يشتغل صح */
+    isolation: isolate;
+}
+
+/* خط بريق علوي */
+.info-card::before,
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        var(--gold),
+        rgba(255,255,255,0.8),
+        transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmerLine 3s linear infinite;
+}
+
+@keyframes shimmerLine {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* بقعة ضوء داخلية */
+.info-card::after,
+.login-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.07) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.info-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(255,255,255,0.45);
+}
+
+.info-card h2,
+.login-card h2 {
+    color: var(--white);
+    margin-bottom: 20px;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* ===================================================
+   شريط إحصاءات (جديد)
+   =================================================== */
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0 30px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 80px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--radius-md);
+    padding: 12px 8px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.stat-item:hover {
+    background: rgba(255,255,255,0.22);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 600;
+}
+
+/* ===================================================
+   قائمة المميزات
+   =================================================== */
+.features {
+    list-style: none;
+    margin: 25px 0;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.features li {
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.15);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-radius: var(--radius-md);
+    border-right: 4px solid var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+    font-weight: 600;
+    color: #ffffff;
+    /* نص أبيض صريح بدون CSS variable */
+    -webkit-text-fill-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير موجي عند المرور */
+.features li::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.features li:hover::before {
+    transform: translateX(100%);
+}
+
+.features li i {
+    font-size: 1.25rem;
+    color: var(--accent-light);
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.features li:hover {
+    background: rgba(255,255,255,0.22);
+    transform: translateX(-6px);
+    border-right-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+}
+
+.features li:hover i {
+    transform: rotate(10deg) scale(1.2);
+    color: var(--gold);
+}
+
+/* ===================================================
+   الأزرار
+   =================================================== */
+.launch-button {
+    background: var(--button-gradient);
+    color: white;
+    border: none;
+    padding: 17px 45px;
+    font-size: 1.2rem;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255,118,117,0.45);
+    transition: var(--transition);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* حدود بريقية */
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+}
+
+/* وهج متحرك داخلي */
+.launch-button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+}
+
+.launch-button:hover::before {
+    left: 100%;
+}
+
+.launch-button:hover {
+    background: linear-gradient(135deg, #e84393, #d63031);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 35px rgba(255,118,117,0.65);
+    outline-color: rgba(255,118,117,0.35);
+}
+
+.launch-button:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 5px 15px rgba(255,118,117,0.4);
+}
+
+/* تأثير Ripple */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    transform: scale(0);
+    animation: rippleOut 0.65s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleOut {
+    to { transform: scale(5); opacity: 0; }
+}
+
+/* زر ثانوي */
+.secondary-button {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.45);
+    padding: 13px 35px;
+    font-size: 1rem;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 12px;
+    backdrop-filter: blur(4px);
+}
+
+.secondary-button:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.7);
+    transform: translateY(-2px);
+}
+
+/* ===================================================
+   حقول الإدخال - Inputs
+   =================================================== */
+.form-group {
+    position: relative;
+    margin: 22px 0;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 17px 55px 17px 20px;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.20);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: var(--transition);
+    color: white;
+    font-size: 1.05rem;
+    font-family: 'Cairo', sans-serif;
+    caret-color: var(--gold);
+}
+
+/* 🌟 تم تعديل الـ Placeholder ليظهر بشكل أنيق وواضح 🌟 */
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 400;
+}
+
+/* أيقونة الحقل (يسار) */
+.form-group .field-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.55);
+    font-size: 1.1rem;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+/* حقل: عند الفوكس */
+.form-group input:focus {
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.22);
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.08), var(--glow-primary);
+}
+
+.form-group input:focus ~ .field-icon {
+    color: var(--gold);
+    transform: translateY(-50%) scale(1.15);
+}
+
+/* 🌟 تم إخفاء التسمية العائمة (Label) لكي لا تتداخل مع الـ Placeholder 🌟 */
+.form-group label {
+    display: none;
+}
+
+/* زر إظهار/إخفاء كلمة المرور */
+.toggle-password {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+    padding: 4px;
+    line-height: 1;
+}
+
+.toggle-password:hover {
+    color: var(--gold);
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* شريط قوة كلمة المرور */
+.password-strength {
+    margin-top: 8px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    direction: rtl;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    border-radius: var(--radius-full);
+    background: rgba(255,255,255,0.15);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.strength-bar.active {
+    background: var(--success);
+    box-shadow: 0 0 8px rgba(0,206,201,0.5);
+}
+
+.strength-bar.weak   { background: var(--accent); }
+.strength-bar.medium { background: var(--gold); }
+.strength-bar.strong { background: var(--success); }
+
+.strength-text {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+    min-width: 50px;
+    text-align: left;
+}
+/* ===================================================
+   نظام التنبيهات (جديد)
+   =================================================== */
+.toast-container {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+    width: max-content;
+    max-width: 90vw;
+}
+
+.toast {
+    background: rgba(30,37,51,0.92);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-full);
+    padding: 12px 22px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow-md);
+    animation: toastIn 0.4s var(--ease-spring) both;
+    border: 1px solid rgba(255,255,255,0.12);
+    pointer-events: all;
+}
+
+.toast.success { border-color: var(--success); }
+.toast.error   { border-color: var(--accent); }
+.toast.info    { border-color: var(--primary); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-15px) scale(0.92); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toastOut {
+    to { opacity: 0; transform: translateY(-15px) scale(0.9); }
+}
+
+/* ===================================================
+   شريط التقدم (جديد)
+   =================================================== */
+.progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 30px;
+    direction: rtl;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.step-circle {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.step.active .step-circle {
+    background: var(--primary);
+    border-color: var(--primary-light);
+    color: white;
+    box-shadow: var(--glow-primary);
+}
+
+.step.done .step-circle {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.step-label {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.step.active .step-label { color: white; }
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    margin: 0 6px;
+    margin-bottom: 22px;
+    border-radius: var(--radius-full);
+    transition: var(--transition);
+}
+
+.step-line.done { background: var(--success); }
+
+/* ===================================================
+   مؤشر التحميل (جديد)
+   =================================================== */
+.loader-dots {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.loader-dots span {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+    0%, 80%, 100% { transform: scale(0.7); opacity: 0.5; }
+    40%           { transform: scale(1.2); opacity: 1; }
+}
+
+/* ===================================================
+   بطاقة معلومات إضافية (جديد)
+   =================================================== */
+.highlight-strip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,215,0,0.12);
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: var(--radius-md);
+    padding: 13px 18px;
+    margin: 20px 0;
+    text-align: right;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.highlight-strip i {
+    color: var(--gold);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* ===================================================
+   فاصل أنيق
+   =================================================== */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+}
+
+/* ===================================================
+   الروابط الاجتماعية (جديد)
+   =================================================== */
+.social-login {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: var(--radius-md);
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-btn:hover {
+    background: rgba(255,255,255,0.20);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.social-btn i { font-size: 1rem; }
+
+/* ===================================================
+   زر واتساب العائم
+   =================================================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    background: linear-gradient(145deg, #25d366, #0fa84b);
+    color: #fff;
+    border-radius: var(--radius-xl);
+    padding: 13px 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25), 0 0 0 0 rgba(37,211,102,0.5);
+    text-decoration: none;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: var(--transition);
+    animation: waPulse 2.5s ease-in-out infinite;
+    backdrop-filter: blur(6px);
+}
+
+.whatsapp-float:hover {
+    background: linear-gradient(145deg, #2be074, #128c7e);
+    transform: scale(1.06) translateY(-5px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.3);
+    animation: none;
+}
+
+.whatsapp-float i {
+    font-size: 1.3rem;
+    transition: var(--transition);
+}
+
+.whatsapp-float:hover i {
+    transform: rotate(10deg) scale(1.15);
+}
+
+@keyframes waPulse {
+    0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.25), 0 0 0 0 rgba(37,211,102,0.55); }
+    50%       { box-shadow: 0 10px 30px rgba(0,0,0,0.25), 0 0 0 18px rgba(37,211,102,0); }
+}
+
+/* ===================================================
+   التذييل
+   =================================================== */
+.main-footer {
+    padding: 22px;
+    text-align: center;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(12px);
+    color: rgba(255,255,255,0.7);
+    width: 100%;
+    font-size: 0.88rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.main-footer a {
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.main-footer a:hover {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+/* ===================================================
+   رابط العودة
+   =================================================== */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 22px;
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    border: 1px solid transparent;
+}
+
+.back-link:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.25);
+    transform: translateX(4px);
+}
+
+/* ===================================================
+   حالات الفوكس للإمكانية
+   =================================================== */
+*:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ===================================================
+   Responsive - الشاشات الصغيرة
+   =================================================== */
+@media (max-width: 768px) {
+    .info-card,
+    .login-card {
+        padding: 32px 22px;
+        border-radius: var(--radius-lg);
+    }
+
+    .stats-bar {
+        gap: 6px;
+    }
+
+    .whatsapp-float {
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 16px;
+        font-size: 0.92rem;
+    }
+
+    .social-login {
+        flex-direction: column;
+    }
+
+    .progress-steps {
+        gap: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container,
+    .login-container {
+        padding: 30px 14px;
+    }
+
+    .features li {
+        padding: 12px 14px;
+    }
+
+    .launch-button {
+        font-size: 1.05rem;
+        padding: 15px 30px;
+    }
+}
+
+/* ===================================================
+   تحسين الطباعة
+   =================================================== */
+@media print {
+    .whatsapp-float,
+    .hero-container::before,
+    .hero-container::after { display: none; }
+}

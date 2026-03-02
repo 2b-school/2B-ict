@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدي شد الحبل 🚩 - أكاديمية المغامرة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gamestyle.css">
+</head>
+<body>
+
+    <!-- ===== الهيدر ===== -->
+    <header class="game-header">
+        <button class="home-btn" onclick="location.href='teacher.html'">
+            <i class="fas fa-house"></i> الرئيسية
+        </button>
+        <h1 class="main-title">⚡ تحدي شد الحبل: المعركة الحاسمة</h1>
+        <div style="width: 110px;"></div>
+    </header>
+
+    <!-- ===== ساحة اللعب ===== -->
+    <div class="battle-ground">
+
+        <!-- ▸ الفريق الأزرق (يسار) -->
+        <section class="team-panel team-blue" id="panel1">
+            <div class="team-header">
+                <span id="nameLeft">الفريق 1</span>
+                <span class="score" id="scoreLeft">0</span>
+            </div>
+
+            <div class="timer-wrapper">
+                <span class="timer-label">وقت الإجابة</span>
+                <div class="team-timer" id="timer1">10</div>
+            </div>
+
+            <div class="question-box">
+                <span class="question-label">📋 السؤال الحالي</span>
+                <div class="math-q" id="qText1">في انتظار بدء المباراة...</div>
+                <div class="keypad" id="options1">
+                    <button id="btn1_0" onclick="checkAns(1, 0)">—</button>
+                    <button id="btn1_1" onclick="checkAns(1, 1)">—</button>
+                    <button id="btn1_2" onclick="checkAns(1, 2)">—</button>
+                    <button id="btn1_3" onclick="checkAns(1, 3)">—</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ▸ المنتصف (الحبل والمؤقت) -->
+        <section class="center-arena">
+
+            <div class="global-timer" id="timerDisplay">
+                <span class="timer-icon">⏱</span>
+                <span id="timerText">وقت المعركة: 00:00</span>
+            </div>
+
+            <div class="rope-container">
+                <div class="rope-center-label">منتصف الملعب</div>
+                <div class="rope-center-line"></div>
+                <div class="rope-line">
+                    <div class="danger-zone-blue"></div>
+                    <div class="danger-zone-red"></div>
+                    <div class="marker" id="marker">🚩</div>
+                </div>
+
+                <div class="players-row">
+                    <div style="display:flex; gap:4px;">
+                        <span class="player-icon player-blue"><i class="fas fa-person"></i></span>
+                        <span class="player-icon player-blue"><i class="fas fa-person"></i></span>
+                    </div>
+                    <div style="display:flex; gap:4px;">
+                        <span class="player-icon player-red"><i class="fas fa-person"></i></span>
+                        <span class="player-icon player-red"><i class="fas fa-person"></i></span>
+                    </div>
+                </div>
+
+                <!-- شريط التقدم -->
+                <div class="progress-track" id="progressTrack" title="مؤشر التقدم">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <div class="team-labels">
+                    <span class="team-label-blue" id="labelLeft">الفريق 1</span>
+                    <span class="team-label-red" id="labelRight">الفريق 2</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ▸ الفريق الأحمر (يمين) -->
+        <section class="team-panel team-red" id="panel2">
+            <div class="team-header">
+                <span id="nameRight">الفريق 2</span>
+                <span class="score" id="scoreRight">0</span>
+            </div>
+
+            <div class="timer-wrapper">
+                <span class="timer-label">وقت الإجابة</span>
+                <div class="team-timer" id="timer2">10</div>
+            </div>
+
+            <div class="question-box">
+                <span class="question-label">📋 السؤال الحالي</span>
+                <div class="math-q" id="qText2">في انتظار بدء المباراة...</div>
+                <div class="keypad" id="options2">
+                    <button id="btn2_0" onclick="checkAns(2, 0)">—</button>
+                    <button id="btn2_1" onclick="checkAns(2, 1)">—</button>
+                    <button id="btn2_2" onclick="checkAns(2, 2)">—</button>
+                    <button id="btn2_3" onclick="checkAns(2, 3)">—</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ===== مودال الإعداد ===== -->
+    <div id="setupModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="modal-icon">🚩</span>
+            <h2 class="modal-title">تجهيز التحدي</h2>
+
+            <label class="modal-field-label">اسم الفريق الأزرق 🔵</label>
+            <input type="text" id="team1Input" placeholder="مثال: الأشبال" value="الأشبال">
+
+            <label class="modal-field-label">اسم الفريق الأحمر 🔴</label>
+            <input type="text" id="team2Input" placeholder="مثال: الزهرات" value="الزهرات">
+
+            <label class="modal-field-label">اختر المادة 📚</label>
+            <select id="quizSelect">
+                <option value="">-- اختر مادة الاختبار --</option>
+            </select>
+
+            <button class="launch-button" onclick="startMatch()">
+                🔥 انطلاق المعركة
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== مودال الفائز ===== -->
+    <div id="winnerModal" class="modal-overlay winner-modal hidden">
+        <div class="modal-box">
+            <span class="winner-emoji">🏆</span>
+            <div class="winner-name" id="winnerText">انتهت المعركة!</div>
+            <div class="winner-subtitle" id="winnerSubtitle">نتيجة رائعة!</div>
+            <button class="replay-btn" onclick="location.reload()">
+                🔁 العب مرة أخرى
+            </button>
+        </div>
+    </div>
+
+    <script src="js/quizzes_db.js"></script>
+
+    <footer class="main-footer">
+        <p>تم التصميم بواسطة: <strong>أحمد سمير، جابر محمود</strong> © 2026</p>
+    </footer>
+
+</body>
+</html>
